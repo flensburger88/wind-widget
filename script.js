@@ -1,4 +1,4 @@
-const token = "";
+
 let windData = {
     timestamps: [],
     windrotations: [],
@@ -13,7 +13,9 @@ let windData = {
 getDataFromApi();
 
 function getDataFromApi() {
-    fetch("https://api.weather.com/v2/pws/observations/all/1day?apiKey=" + token + "&stationId=IWANDE4&numericPrecision=decimal&format=json&units=m")
+	var token = document.getElementById('windchart').getAttribute("token");
+	var station = document.getElementById('windchart').getAttribute("station");
+    fetch("https://api.weather.com/v2/pws/observations/all/1day?apiKey=" + token + "&stationId=" + station + "&numericPrecision=decimal&format=json&units=m")
         .then(response => response.json())
         .then(data => {
             console.log(data);
